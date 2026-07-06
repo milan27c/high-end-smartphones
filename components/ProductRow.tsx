@@ -54,7 +54,7 @@ export default function ProductRow({ product, index }: ProductRowProps) {
 
         {/* Content */}
         <div className="flex flex-col gap-5 p-7 sm:p-9">
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+          <div className="flex flex-col gap-2 text-center sm:flex-row sm:items-start sm:justify-between sm:gap-4 sm:text-left">
             <div>
               <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink">
                 {product.brand}
@@ -84,7 +84,7 @@ export default function ProductRow({ product, index }: ProductRowProps) {
               {product.specs.map((spec) => (
                 <li
                   key={spec}
-                  className="flex items-start gap-2 text-[13px] leading-snug text-ink"
+                  className="flex items-start justify-center gap-2 text-[13px] leading-snug text-ink sm:justify-start"
                 >
                   <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-black" />
                   {spec}
@@ -98,11 +98,11 @@ export default function ProductRow({ product, index }: ProductRowProps) {
               <div className="w-full sm:w-auto sm:min-w-0">
                 <div className="flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-start sm:gap-8">
                   {product.colours && product.colours.length > 0 && (
-                    <div>
-                      <p className="text-[11px] font-medium uppercase tracking-wide text-ink">
+                    <div className="w-full sm:w-auto">
+                      <p className="text-center text-[11px] font-medium uppercase tracking-wide text-ink sm:text-left">
                         Colors
                       </p>
-                      <div className="mt-2 flex gap-2">
+                      <div className="mt-2 flex justify-center gap-2 sm:justify-start">
                         {product.colours.map((colour, i) => (
                           <button
                             key={colour.name}
@@ -127,7 +127,7 @@ export default function ProductRow({ product, index }: ProductRowProps) {
                   )}
 
                   <div className="w-full sm:w-auto">
-                    <p className="text-[11px] font-medium uppercase tracking-wide text-ink">
+                    <p className="text-center text-[11px] font-medium uppercase tracking-wide text-ink sm:text-left">
                       <span className="sm:hidden">Choose tenure (months)</span>
                       <span className="hidden sm:inline">Choose tenure</span>
                     </p>
@@ -165,13 +165,13 @@ export default function ProductRow({ product, index }: ProductRowProps) {
 
               <button
                 type="button"
-                className="cursor-pointer rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-primary-dark"
+                className="flex-shrink-0 cursor-pointer whitespace-nowrap rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-primary-dark"
               >
                 Buy Now
               </button>
             </div>
           ) : (
-            <div>
+            <div className="text-center sm:text-left">
               <button
                 type="button"
                 className="cursor-pointer rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-primary-dark"

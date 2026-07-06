@@ -2,6 +2,14 @@
 // Sourced from the campaign spec sheet (screenshot, 2026-07-06).
 // See CLAUDE.md > "Product data" for known gaps and assumptions.
 
+export type Colour = {
+  name: string;
+  /** Swatch hex. No official colour codes were supplied for these devices —
+   * these are visual approximations of the named colours until the business
+   * team provides exact brand hex values. */
+  hex: string;
+};
+
 export type Product = {
   slug: string;
   brand: string;
@@ -10,7 +18,10 @@ export type Product = {
   normalPrice: number | null;
   /** Special / campaign price in LKR, if different from normalPrice. */
   specialPrice?: number | null;
-  colours?: string[];
+  colours?: Colour[];
+  /** Real front/back product photos, in `public/`. Falls back to the dummy
+   * placeholder frames in DeviceShowcase when not set. */
+  images?: string[];
   specs: string[];
   /** Whether the campaign brief asked for this model to be shown. */
   featured: boolean;
@@ -29,7 +40,13 @@ export const products: Product[] = [
     brand: "Motorola",
     model: "G57",
     normalPrice: 82999,
-    colours: [],
+    images: ["/images/products/1/front.png", "/images/products/1/back.png"],
+    colours: [
+      { name: "Corsair", hex: "#2E3238" },
+      { name: "Fluidity", hex: "#B9C8D1" },
+      { name: "Pink Lemonade", hex: "#F4B8CE" },
+      { name: "Regatta", hex: "#2F4B7C" },
+    ],
     specs: [
       "5G",
       "Qualcomm Snapdragon 6s Gen 4",
@@ -46,6 +63,11 @@ export const products: Product[] = [
     brand: "vivo",
     model: "V70FE",
     normalPrice: 189990,
+    images: ["/images/products/2/front.png", "/images/products/2/back.png"],
+    colours: [
+      { name: "Titanium Silver", hex: "#B8BCC0" },
+      { name: "Ocean Blue", hex: "#1B4F72" },
+    ],
     specs: [
       "5G",
       "200MP Ultra Clear camera",
@@ -60,12 +82,17 @@ export const products: Product[] = [
     brand: "vivo",
     model: "X300 Pro",
     normalPrice: 459990,
+    images: ["/images/products/3/front.png", "/images/products/3/back.png"],
+    colours: [
+      { name: "Brown", hex: "#6B4226" },
+      { name: "Black", hex: "#1A1A1A" },
+    ],
     specs: [
       "5G",
       "ZEISS gimbal-grade main camera",
       "200MP ZEISS APO telephoto camera",
     ],
-    featured: false,
+    featured: true,
     accent: "#0A66FF",
   },
   {
@@ -73,6 +100,13 @@ export const products: Product[] = [
     brand: "Xiaomi",
     model: "17T",
     normalPrice: 224999,
+    images: ["/images/products/4/front.png", "/images/products/4/back.png"],
+    colours: [
+      { name: "Violet", hex: "#6B4FA0" },
+      { name: "Blue", hex: "#3B6FD4" },
+      { name: "Opal White", hex: "#E9E6E0" },
+      { name: "Black", hex: "#1A1A1A" },
+    ],
     specs: [
       "5G",
       "6500mAh battery, 22.5W reverse charge",
@@ -86,6 +120,12 @@ export const products: Product[] = [
     brand: "Xiaomi",
     model: "Redmi Note 15 Pro+",
     normalPrice: 139999,
+    images: ["/images/products/5/front.png", "/images/products/5/back.png"],
+    colours: [
+      { name: "Black", hex: "#1A1A1A" },
+      { name: "Mocha Brown", hex: "#7B5A45" },
+      { name: "Glacier Blue", hex: "#A9C6D8" },
+    ],
     specs: [
       "5G",
       "6500mAh battery, 100W HyperCharge",
@@ -100,13 +140,18 @@ export const products: Product[] = [
     brand: "Oppo",
     model: "Reno 15F",
     normalPrice: 180990,
+    images: ["/images/products/6/front.png", "/images/products/6/back.png"],
+    colours: [
+      { name: "Twilight Blue", hex: "#2C3E67" },
+      { name: "Aurora Blue", hex: "#4F86C6" },
+    ],
     specs: [
       "5G",
       "50MP ultra wide selfie camera",
       "AI Portrait Glow",
       "7000mAh large battery",
     ],
-    featured: false,
+    featured: true,
     accent: "#1AA05A",
   },
   {
@@ -114,6 +159,12 @@ export const products: Product[] = [
     brand: "Oppo",
     model: "Reno 16F",
     normalPrice: null,
+    images: ["/images/products/7/front.png", "/images/products/7/back.png"],
+    colours: [
+      { name: "Dream Purple", hex: "#8B6FB3" },
+      { name: "Twilight Violet", hex: "#5B4B8A" },
+      { name: "Pop White", hex: "#F5F5F5" },
+    ],
     specs: ["5G", "50MP ultra wide selfie camera", "HoloVerse 3D technology"],
     featured: true,
     accent: "#1AA05A",
@@ -123,6 +174,11 @@ export const products: Product[] = [
     brand: "realme",
     model: "C85",
     normalPrice: 79990,
+    images: ["/images/products/8/front.png", "/images/products/8/back.png"],
+    colours: [
+      { name: "Kingfisher Blue", hex: "#137DC5" },
+      { name: "Swan Black", hex: "#161616" },
+    ],
     specs: [
       "7000mAh Titan battery",
       "IP69 Pro water resistance",
@@ -136,6 +192,15 @@ export const products: Product[] = [
     brand: "Infinix",
     model: "Note 60",
     normalPrice: 139999,
+    images: ["/images/products/9/front.png", "/images/products/9/back.png"],
+    colours: [
+      { name: "Mist Titanium", hex: "#B0AFA8" },
+      { name: "Deep Ocean Blue", hex: "#1B3A5C" },
+      { name: "Solar Orange", hex: "#E4772E" },
+      { name: "Mocha Brown", hex: "#7B5A45" },
+      { name: "Frost Silver", hex: "#C9CDD1" },
+      { name: "Torino Black", hex: "#161616" },
+    ],
     specs: [
       "6500mAh battery, 45W charge",
       "50MP main camera",
@@ -149,6 +214,12 @@ export const products: Product[] = [
     brand: "Infinix",
     model: "Note 60 Pro",
     normalPrice: 149999,
+    images: ["/images/products/10/front.png", "/images/products/10/back.png"],
+    colours: [
+      { name: "Orange", hex: "#E4772E" },
+      { name: "Mocha Brown", hex: "#7B5A45" },
+      { name: "Deep Ocean Blue", hex: "#1B3A5C" },
+    ],
     specs: [
       "5G",
       "Corning Gorilla Glass 7i",

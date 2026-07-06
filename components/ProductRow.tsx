@@ -18,6 +18,7 @@ type ProductRowProps = {
 export default function ProductRow({ product, index }: ProductRowProps) {
   const [tenure, setTenure] = useState<number>(12);
   const [hovered, setHovered] = useState(false);
+  const [colourIndex, setColourIndex] = useState(0);
 
   // No down payment surfaced — indicative monthly is computed on full price.
   const breakdown = useMemo(
@@ -40,6 +41,7 @@ export default function ProductRow({ product, index }: ProductRowProps) {
         <div className="relative flex min-h-[260px] items-center justify-center bg-white p-8">
           <DeviceShowcase
             playing={hovered}
+            frames={product.images}
             className="h-[264px] w-[264px] sm:h-[312px] sm:w-[312px]"
           />
         </div>
@@ -92,29 +94,62 @@ export default function ProductRow({ product, index }: ProductRowProps) {
           )}
 
           {priceKnown && breakdown ? (
-            <div className="flex flex-col items-center gap-5 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
-              <div className="w-full sm:w-auto">
-                <p className="text-[11px] font-medium uppercase tracking-wide text-ink">
-                  <span className="sm:hidden">Choose tenure (months)</span>
-                  <span className="hidden sm:inline">Choose tenure</span>
-                </p>
-                <div className="mt-2 flex w-full flex-nowrap items-center justify-between gap-1 rounded-full border border-black/[0.08] bg-white p-1 sm:inline-flex sm:w-auto sm:flex-wrap sm:justify-start">
-                  {TENURE_OPTIONS.map((months) => (
-                    <button
-                      key={months}
-                      type="button"
-                      onClick={() => setTenure(months)}
-                      aria-pressed={tenure === months}
-                      className={`flex-1 cursor-pointer rounded-full px-2 py-1.5 text-[13px] font-semibold transition-colors duration-200 sm:flex-none sm:px-3.5 ${
-                        tenure === months
-                          ? "bg-ink text-white"
-                          : "text-muted hover:text-ink"
-                      }`}
-                    >
-                      <span className="sm:hidden">{months}</span>
-                      <span className="hidden sm:inline">{months} mo</span>
-                    </button>
-                  ))}
+            <div className="flex flex-col items-center gap-5 sm:flex-row sm:flex-nowrap sm:items-end sm:justify-between">
+              <div className="w-full sm:w-auto sm:min-w-0">
+                <div className="flex flex-col gap-5 sm:flex-row sm:flex-wrap sm:items-start sm:gap-8">
+                  {product.colours && product.colours.length > 0 && (
+                    <div>
+                      <p className="text-[11px] font-medium uppercase tracking-wide text-ink">
+                        Colors
+                      </p>
+                      <div className="mt-2 flex gap-2">
+                        {product.colours.map((colour, i) => (
+                          <button
+                            key={colour.name}
+                            type="button"
+                            onClick={() => setColourIndex(i)}
+                            aria-pressed={colourIndex === i}
+                            aria-label={colour.name}
+                            className={`h-6 w-6 cursor-pointer rounded-full border-2 transition-colors duration-200 ${
+                              colourIndex === i
+                                ? "border-ink"
+                                : "border-transparent"
+                            }`}
+                          >
+                            <span
+                              className="block h-full w-full rounded-full border border-black/10"
+                              style={{ backgroundColor: colour.hex }}
+                            />
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="w-full sm:w-auto">
+                    <p className="text-[11px] font-medium uppercase tracking-wide text-ink">
+                      <span className="sm:hidden">Choose tenure (months)</span>
+                      <span className="hidden sm:inline">Choose tenure</span>
+                    </p>
+                    <div className="mt-2 flex w-full flex-nowrap items-center justify-between gap-1 rounded-full border border-black/[0.08] bg-white p-1 sm:inline-flex sm:w-auto sm:flex-wrap sm:justify-start">
+                      {TENURE_OPTIONS.map((months) => (
+                        <button
+                          key={months}
+                          type="button"
+                          onClick={() => setTenure(months)}
+                          aria-pressed={tenure === months}
+                          className={`flex-1 cursor-pointer rounded-full px-2 py-1.5 text-[13px] font-semibold transition-colors duration-200 sm:flex-none sm:px-3.5 ${
+                            tenure === months
+                              ? "bg-ink text-white"
+                              : "text-muted hover:text-ink"
+                          }`}
+                        >
+                          <span className="sm:hidden">{months}</span>
+                          <span className="hidden sm:inline">{months} mo</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
                 <p className="mt-4 text-center text-[11px] font-medium uppercase tracking-wide text-muted sm:text-left">

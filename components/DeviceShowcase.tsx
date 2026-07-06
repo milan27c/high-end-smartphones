@@ -4,20 +4,22 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 // Dummy stand-in photography (see CLAUDE.md > "Product imagery" — no
-// individual device photos were supplied). Reused for every model until
-// real per-device renders are provided; the two frames crossfade to give
-// the showcase some life while everyone waits on the real assets.
-const frames = ["/images/motog57-1.avif", "/images/motog57-2.webp"];
+// individual device photos were supplied for most models yet). Used as a
+// fallback for any product without its own `images` set.
+const placeholderFrames = ["/images/motog57-1.avif", "/images/motog57-2.webp"];
 
 type DeviceShowcaseProps = {
   className?: string;
   /** Only crossfade between frames while true (e.g. the card is hovered). */
   playing?: boolean;
+  /** Real front/back photos for this device; falls back to the placeholder. */
+  frames?: string[];
 };
 
 export default function DeviceShowcase({
   className = "",
   playing = false,
+  frames = placeholderFrames,
 }: DeviceShowcaseProps) {
   const [active, setActive] = useState(0);
 
@@ -27,7 +29,7 @@ export default function DeviceShowcase({
       setActive((prev) => (prev + 1) % frames.length);
     }, 1400);
     return () => clearInterval(id);
-  }, [playing]);
+  }, [playing, frames.length]);
 
   return (
     <div

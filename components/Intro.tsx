@@ -31,7 +31,7 @@ export default function Intro() {
         </Reveal>
         <Reveal variant="up" delay={80}>
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            Flagship-grade devices from the brands you trust — walk into Abans,
+            Flagship-grade devices from the brands you trust, walk into Abans,
             pick your favourite, and split it into easy monthly instalments with
             Tiken Tika Pay.
           </p>

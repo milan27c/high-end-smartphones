@@ -5,17 +5,17 @@ const pillars = [
   {
     title: "Affordability",
     description:
-      "Split any flagship into 3, 6, 12 or 24 easy monthly instalments with Tiken Tika Pay — high-end no longer means a high upfront cost.",
+      "Split any flagship into 3, 6, 12 or 24 easy monthly instalments with Tiken Tika Pay, so high-end no longer means a high upfront cost.",
   },
   {
     title: "Premium Selection",
     description:
-      "A curated, top-tier lineup from the brands you trust — every model chosen for genuine flagship-grade performance.",
+      "A curated, top-tier lineup from the brands you trust, with every model chosen for genuine flagship-grade performance.",
   },
   {
     title: "Value Proposition",
     description:
-      "Standout cameras, batteries and displays paired with real lifestyle benefits — premium features, made financially accessible.",
+      "Standout cameras, batteries and displays paired with real lifestyle benefits, premium features made financially accessible.",
   },
 ];
 
@@ -44,7 +44,7 @@ export default function EasyPayments() {
           <Reveal variant="up" delay={100}>
             <p className="mt-6 text-base leading-relaxed text-white/60 sm:text-lg">
               Tiken Tika Pay turns a big price tag into small, manageable
-              monthly payments — so affordability never means settling for
+              monthly payments, so affordability never means settling for
               less phone.
             </p>
           </Reveal>

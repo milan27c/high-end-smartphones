@@ -28,14 +28,14 @@ Keep all color/font usage referencing the Tailwind tokens (`bg-primary`, `text-i
 
 Sourced from the spec sheet provided for this campaign (screenshot, 2026-07-06). Known gaps to resolve with the business team before this goes live:
 
-- **Itel Super 26 Ultra** — listed in the original campaign brief, but confirmed (2026-07-06) that this device doesn't exist / isn't part of the lineup. Removed from `lib/products.ts` and the showcase entirely. `ProductRow.tsx` still supports a `comingSoon` product flag generically, but nothing currently uses it.
+- **Itel Super 26 Ultra** — earlier confirmed (2026-07-06) as not part of the lineup and removed; reinstated (2026-07-13) as an 11th device with real specs/photos/colours supplied directly by the business team. `ProductRow.tsx` still supports a `comingSoon` product flag generically, but nothing currently uses it.
 - **Oppo Reno 16F** — price is "TBA" and confirmed to stay that way for now. Rendered with a "Price announcing soon" state; EMI calculator is disabled until a real price lands.
-- All 10 devices from the spec sheet are shown in the showcase (confirmed 2026-07-06), including **Vivo X300 Pro** and **Oppo Reno 15F** — both flagged `featured: true` in `lib/products.ts`. The showcase order follows the array order in `lib/products.ts`, which mirrors the confirmed device list order.
+- All 11 devices from the spec sheet plus Itel are shown in the showcase, including **Vivo X300 Pro** and **Oppo Reno 15F** — both flagged `featured: true` in `lib/products.ts`. The showcase order follows the array order in `lib/products.ts`, which mirrors the confirmed device list order.
 - **Special Price / Down Payment / Monthly Instalment** columns were empty in the source sheet for every model. The EMI calculator therefore computes an **indicative, 0%-interest** monthly figure (`(price − down payment) / tenure`) with a selectable down-payment percentage (0/10/20/30%) and tenure (3/6/9/12/18/24 months). This is clearly labeled "indicative" in the UI. **Do not treat this as real bank/finance-partner terms** — swap in actual APR/tenure rules from the business team once available (see `calcInstalment` in `lib/products.ts`).
 
 ## Product imagery
 
-No individual product photos were supplied (only `hero.jpeg`). Device visuals are currently a CSS/SVG phone mockup (`components/PhoneMockup.tsx`) tinted per-brand rather than real renders, so nothing 404s. To swap in real photography: drop transparent PNGs at `public/images/products/{slug}.png` (slug = `product.slug` in `lib/products.ts`) and update `ProductRow.tsx` to render `next/image` instead of `PhoneMockup` when an image exists.
+Real front/back photos have been supplied for all 11 devices, at `public/images/products/{n}/front.png` + `back.png` (numbered 1–11, matching array order in `lib/products.ts`, not slugs). Each `Product.images` entry points at its pair. `components/DeviceShowcase.tsx` crossfades between the two frames while the card is hovered; if a future product is added without an `images` array, it falls back to the placeholder frames baked into that component.
 
 ## Working notes
 

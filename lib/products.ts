@@ -122,7 +122,7 @@ export const products: Product[] = [
     slug: "redmi-note-15-pro-plus",
     brand: "Redmi",
     model: "Note 15 Pro+",
-    normalPrice: 139999,
+    normalPrice: 179999,
     images: ["/images/products/5/front.png", "/images/products/5/back.png"],
     colours: [
       { name: "Black", hex: "#1A1A1A" },

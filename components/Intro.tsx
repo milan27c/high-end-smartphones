@@ -2,9 +2,9 @@ import Image from "next/image";
 import { featuredProducts } from "@/lib/products";
 import Reveal from "./Reveal";
 
-// No dedicated Xiaomi mark was supplied — redmi.png stands in for the Xiaomi
-// logo too until a proper asset is provided. Itel has no logo file yet
-// either, so it's left out of this grid until one lands.
+// Xiaomi and Redmi are both the "Mi" brand under one shared logo, so they
+// collapse to a single tile below. Itel has no logo file yet, so it's left
+// out of this grid until one lands.
 const brandLogos: Record<string, string> = {
   Motorola: "/images/logos/motorola.png",
   vivo: "/images/logos/vivo.png",
@@ -15,9 +15,18 @@ const brandLogos: Record<string, string> = {
   Infinix: "/images/logos/infinix.png",
 };
 
-const brands = Array.from(
+const brandNames = Array.from(
   new Set(featuredProducts.map((p) => p.brand))
 ).filter((brand) => brand in brandLogos);
+
+// One tile per distinct logo file, not per brand name.
+const seenLogos = new Set<string>();
+const brands = brandNames.filter((brand) => {
+  const src = brandLogos[brand];
+  if (seenLogos.has(src)) return false;
+  seenLogos.add(src);
+  return true;
+});
 
 export default function Intro() {
   return (

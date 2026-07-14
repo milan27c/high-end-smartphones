@@ -60,7 +60,7 @@ export default function Intro() {
             >
               <div
                 className={`relative w-full ${
-                  brand === "Itel" ? "h-[44px]" : "h-[74px]"
+                  brand === "Itel" ? "h-[35px]" : "h-[74px]"
                 }`}
               >
                 <Image

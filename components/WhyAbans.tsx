@@ -7,9 +7,9 @@ const pillars = [
       "One of Sri Lanka's most established electronics retailers, with showrooms across the island.",
   },
   {
-    title: "100% genuine, warranty backed",
+    title: "TRC Approved",
     description:
-      "Every device sold is genuine and comes with full manufacturer warranty and after-sales support.",
+      "Every device in this lineup is officially TRC-approved for use in Sri Lanka, so premium always comes with full compliance and peace of mind.",
   },
   {
     title: "Flexible finance options",

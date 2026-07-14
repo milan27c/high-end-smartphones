@@ -3,8 +3,7 @@ import { featuredProducts } from "@/lib/products";
 import Reveal from "./Reveal";
 
 // Xiaomi and Redmi are both the "Mi" brand under one shared logo, so they
-// collapse to a single tile below. Itel has no logo file yet, so it's left
-// out of this grid until one lands.
+// collapse to a single tile below.
 const brandLogos: Record<string, string> = {
   Motorola: "/images/logos/motorola.png",
   vivo: "/images/logos/vivo.png",
@@ -13,6 +12,7 @@ const brandLogos: Record<string, string> = {
   Oppo: "/images/logos/oppo.png",
   realme: "/images/logos/Realme-Logo.png",
   Infinix: "/images/logos/infinix.png",
+  Itel: "/images/logos/itel.png",
 };
 
 const brandNames = Array.from(
@@ -35,8 +35,8 @@ export default function Intro() {
         <Reveal variant="up">
           <h1 className="text-4xl font-bold leading-[1.08] tracking-tight text-ink sm:text-6xl">
             <span className="whitespace-nowrap">
-              The <span className="text-primary">High-End</span> phones you
-              want,
+              TRC-Approved, <span className="text-primary">High-End</span>{" "}
+              phones,
             </span>
             <br />
             the plan you deserve.
@@ -44,33 +44,37 @@ export default function Intro() {
         </Reveal>
         <Reveal variant="up" delay={80}>
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            Flagship-grade devices from the brands you trust, walk into Abans,
-            pick your favourite, and split it into easy monthly instalments with
-            Tiken Tika Pay.
+            TRC-approved, genuinely high-end devices from the brands you
+            trust, walk into Abans, pick your favourite, and split it into
+            easy monthly instalments with Tiken Tika Pay.
           </p>
         </Reveal>
-
-        <Reveal variant="up" delay={160}>
-          <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {brands.map((brand) => (
-              <div
-                key={brand}
-                className="group flex h-24 items-center justify-center rounded-2xl border border-black/[0.06] bg-[#F7F5F7] px-3 transition-colors duration-300 hover:border-primary/20 hover:bg-white hover:shadow-sm"
-              >
-                <div className="relative h-[74px] w-full">
-                  <Image
-                    src={brandLogos[brand]}
-                    alt={`${brand} logo`}
-                    fill
-                    className="object-contain"
-                    sizes="160px"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </Reveal>
       </div>
+
+      <Reveal variant="up" delay={160}>
+        <div className="mx-auto mt-14 grid max-w-6xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-7">
+          {brands.map((brand) => (
+            <div
+              key={brand}
+              className="group flex h-24 items-center justify-center rounded-2xl border border-black/[0.06] bg-[#F7F5F7] px-3 transition-colors duration-300 hover:border-primary/20 hover:bg-white hover:shadow-sm"
+            >
+              <div
+                className={`relative w-full ${
+                  brand === "Itel" ? "h-[44px]" : "h-[74px]"
+                }`}
+              >
+                <Image
+                  src={brandLogos[brand]}
+                  alt={`${brand} logo`}
+                  fill
+                  className="object-contain"
+                  sizes="160px"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </Reveal>
     </section>
   );
 }

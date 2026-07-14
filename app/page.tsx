@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Intro from "@/components/Intro";
 import EasyPayments from "@/components/EasyPayments";
+import TrclBanner from "@/components/TrclBanner";
 import ProductsSection from "@/components/ProductsSection";
 import WhyAbans from "@/components/WhyAbans";
 import FinalCta from "@/components/FinalCta";
@@ -15,6 +16,7 @@ export default function Home() {
       <Intro />
       <EasyPayments />
       <ProductsSection />
+      <TrclBanner />
       <WhyAbans />
       <FinalCta />
       <Footer />

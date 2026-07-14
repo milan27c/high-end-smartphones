@@ -7,9 +7,9 @@ const pillars = [
       "One of Sri Lanka's most established electronics retailers, with showrooms across the island.",
   },
   {
-    title: "TRC Approved",
+    title: "TRCSL Approved",
     description:
-      "Every device in this lineup is officially TRC-approved for use in Sri Lanka, so premium always comes with full compliance and peace of mind.",
+      "Every device in this lineup is officially TRCSL-approved for use in Sri Lanka, so premium always comes with full compliance and peace of mind.",
   },
   {
     title: "Flexible finance options",

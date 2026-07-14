@@ -35,7 +35,7 @@ export default function Intro() {
         <Reveal variant="up">
           <h1 className="text-4xl font-bold leading-[1.08] tracking-tight text-ink sm:text-6xl">
             <span className="whitespace-nowrap">
-              TRC-Approved, <span className="text-primary">High-End</span>{" "}
+              TRCSL-Approved, <span className="text-primary">High-End</span>{" "}
               phones,
             </span>
             <br />
@@ -44,7 +44,7 @@ export default function Intro() {
         </Reveal>
         <Reveal variant="up" delay={80}>
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
-            TRC-approved, genuinely high-end devices from the brands you
+            TRCSL-approved, genuinely high-end devices from the brands you
             trust, walk into Abans, pick your favourite, and split it into
             easy monthly instalments with Tiken Tika Pay.
           </p>

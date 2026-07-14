@@ -3,7 +3,7 @@ import Reveal from "./Reveal";
 
 export default function TrclBanner() {
   return (
-    <section className="bg-[#F5F5F7] py-8 sm:py-10">
+    <section className="bg-[#F5F5F7] pb-11 pt-3 sm:pb-14 sm:pt-4">
       <Reveal variant="fade">
         <div className="mx-auto w-full max-w-7xl px-6 sm:px-10">
           <div className="relative aspect-[2172/724] w-full overflow-hidden rounded-2xl">
